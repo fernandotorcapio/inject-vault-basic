@@ -1,0 +1,93 @@
+name: Build basic iPhone app
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: basic-ios
+  cancel-in-progress: false
+
+jobs:
+  basic:
+    if: github.event.repository.private == false
+    runs-on: macos-15
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Confirm basic build configuration
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import plistlib
+          from pathlib import Path
+          root=Path('.')
+          with (root/'ios/InjectVault/Basic.entitlements').open('rb') as handle:
+              assert plistlib.load(handle)=={}, 'Basic entitlement must be empty'
+          with (root/'ios/InjectVault/Info-Basic.plist').open('rb') as handle:
+              assert 'NFCReaderUsageDescription' not in plistlib.load(handle)
+          project=(root/'InjectVaultBasic.xcodeproj/project.pbxproj').read_text()
+          assert 'VAULT_BASIC' in project
+          assert 'NearFieldCommunication' not in project
+          PY
+          xcodebuild -version
+      - name: Test core
+        run: swift test --parallel
+      - name: Build unsigned device application
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -project InjectVaultBasic.xcodeproj \
+            -scheme InjectVaultBasic \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            build > build.log 2>&1 || { tail -n 150 build.log; exit 1; }
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          mkdir -p build/package/Payload
+          cp -R build/DerivedData/Build/Products/Release-iphoneos/InjectVault.app build/package/Payload/
+          test -f build/package/Payload/InjectVault.app/InjectVault
+          plutil -lint build/package/Payload/InjectVault.app/Info.plist
+          if otool -L build/package/Payload/InjectVault.app/InjectVault | grep -q '/CoreNFC.framework/'; then
+            echo 'Unexpected NFC framework in basic build'; exit 1
+          fi
+          (cd build/package && /usr/bin/zip -qry ../InjectVault-Basic-unsigned.ipa Payload)
+          (cd build && shasum -a 256 InjectVault-Basic-unsigned.ipa > SHA256SUMS.txt)
+      - name: Launch the basic app in an iPhone simulator
+        run: |
+          set -euo pipefail
+          xcrun simctl list devices available --json > build/simulators.json
+          simulator="$(python3 -c 'import json; d=json.load(open("build/simulators.json")); print(next(v["udid"] for vs in d["devices"].values() for v in vs if "iPhone" in v["name"] and v.get("isAvailable")))')"
+          xcrun simctl boot "$simulator"
+          xcrun simctl bootstatus "$simulator" -b
+          xcodebuild -project InjectVaultBasic.xcodeproj -scheme InjectVaultBasic \
+            -configuration Debug -sdk iphonesimulator -destination "id=$simulator" \
+            -derivedDataPath build/Simulator CODE_SIGNING_ALLOWED=NO build > simulator-build.log 2>&1 || { tail -n 150 simulator-build.log; exit 1; }
+          xcrun simctl install "$simulator" build/Simulator/Build/Products/Debug-iphonesimulator/InjectVault.app
+          xcrun simctl launch "$simulator" br.app.injectvault.basic
+          sleep 5
+          xcrun simctl io "$simulator" screenshot build/InjectVault-Basic-simulator.png
+          xcrun simctl shutdown "$simulator"
+      - name: Publish IPA as a release asset (no Actions artifact storage)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="basic-${GITHUB_RUN_ID}"
+          printf '%s\n' 'Versão nativa básica: catálogo, cadastro local e exportação. Sem NFC ou controle de máquinas.' 'IPA não assinado: instale para teste pessoal com sua conta Apple no Sideloadly.' "Commit: ${GITHUB_SHA}" > build/release-notes.txt
+          gh release create "$tag" build/InjectVault-Basic-unsigned.ipa build/SHA256SUMS.txt build/InjectVault-Basic-simulator.png \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title 'Inject Vault Basic 0.2.0 — teste pessoal' \
+            --notes-file build/release-notes.txt --prerelease
+
