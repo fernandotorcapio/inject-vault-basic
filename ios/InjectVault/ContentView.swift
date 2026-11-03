@@ -34,7 +34,11 @@ import SwiftUI
                     VStack(alignment: .leading, spacing: 12) {
                         Label("INJECT VAULT", systemImage: "wave.3.right.circle").font(.caption.weight(.bold))
                         Text("Conheça o sistema.\nConfira a origem.").font(.title.bold())
+                        #if VAULT_BASIC
+                        Text("Catálogo pesquisável e cadastros locais neste iPhone.").foregroundStyle(.secondary)
+                        #else
                         Text("Catálogo informativo e leitura de etiquetas próprias.").foregroundStyle(.secondary)
+                        #endif
                     }.padding(.vertical, 12)
                 }
                 if let catalogue {
