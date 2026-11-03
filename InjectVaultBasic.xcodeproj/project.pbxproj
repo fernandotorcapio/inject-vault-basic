@@ -1,0 +1,42 @@
+// !$*UTF8*$!
+{
+archiveVersion = 1;
+classes = {};
+objectVersion = 56;
+objects = {
+D721A98B757598F430374004 = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "ios/InjectVault/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+FC17B1240E670D1D0BF7233D = {isa = PBXBuildFile; fileRef = D721A98B757598F430374004; };
+
+B0B296D4AB47338BBCDDB92F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ios/InjectVault/AppStore.swift"; sourceTree = SOURCE_ROOT; };
+4010DF22473590A057F11D63 = {isa = PBXBuildFile; fileRef = B0B296D4AB47338BBCDDB92F; };
+23DA94ED30545F6A8445DB4E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ios/InjectVault/BasicInfoView.swift"; sourceTree = SOURCE_ROOT; };
+81D4CCE84D4932C6B33E250F = {isa = PBXBuildFile; fileRef = 23DA94ED30545F6A8445DB4E; };
+A91214A3727B902F75AC919B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ios/InjectVault/Catalogue.swift"; sourceTree = SOURCE_ROOT; };
+2064D7579CF5DB3D22EBD777 = {isa = PBXBuildFile; fileRef = A91214A3727B902F75AC919B; };
+5D9359B22FE9E6B036C3A174 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ios/InjectVault/ContentView.swift"; sourceTree = SOURCE_ROOT; };
+17AB578F613906E6F6928E5D = {isa = PBXBuildFile; fileRef = 5D9359B22FE9E6B036C3A174; };
+CCB10BEADB313213A3426F73 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ios/InjectVault/InjectVaultApp.swift"; sourceTree = SOURCE_ROOT; };
+0BF152B4839B25CA4C4129D9 = {isa = PBXBuildFile; fileRef = CCB10BEADB313213A3426F73; };
+4A2BFDBEDBA6A7D0D152E2BC = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ios/InjectVault/NFCReader.swift"; sourceTree = SOURCE_ROOT; };
+13BC08A461BDEAAF75E4DB7B = {isa = PBXBuildFile; fileRef = 4A2BFDBEDBA6A7D0D152E2BC; };
+5664D558901110A05B1577C4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ios/VaultCore/Domain.swift"; sourceTree = SOURCE_ROOT; };
+4E87FAD1646019A6BB452988 = {isa = PBXBuildFile; fileRef = 5664D558901110A05B1577C4; };
+89F3921D8BCA0054E79AC3A5 = {isa = PBXFileReference; lastKnownFileType = text.json; path = "ios/InjectVault/catalogue.json"; sourceTree = SOURCE_ROOT; };
+25DE0D93DAB4DDCE918B35FE = {isa = PBXBuildFile; fileRef = 89F3921D8BCA0054E79AC3A5; };
+A8792157CB4F27FB949C035F = {isa = PBXFileReference; explicitFileType = wrapper.application; path = InjectVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
+AD936FCBED631FA67E05C3EA = {isa = PBXGroup; children = (B0B296D4AB47338BBCDDB92F,23DA94ED30545F6A8445DB4E,A91214A3727B902F75AC919B,5D9359B22FE9E6B036C3A174,CCB10BEADB313213A3426F73,4A2BFDBEDBA6A7D0D152E2BC,5664D558901110A05B1577C4,89F3921D8BCA0054E79AC3A5,0A3E27B8CA818264D75C8D81,); sourceTree = "<group>"; };
+0A3E27B8CA818264D75C8D81 = {isa = PBXGroup; name = Products; children = (A8792157CB4F27FB949C035F,); sourceTree = "<group>"; };
+878A52FC5FF6A57D50B7B870 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (4010DF22473590A057F11D63,81D4CCE84D4932C6B33E250F,2064D7579CF5DB3D22EBD777,17AB578F613906E6F6928E5D,0BF152B4839B25CA4C4129D9,13BC08A461BDEAAF75E4DB7B,4E87FAD1646019A6BB452988,); runOnlyForDeploymentPostprocessing = 0; };
+41D311A605520FC7B8B9A980 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (FC17B1240E670D1D0BF7233D,25DE0D93DAB4DDCE918B35FE,); runOnlyForDeploymentPostprocessing = 0; };
+E2AA269EB967A8853A258BFA = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+34A04005BCAF206EEC990BD9 = {isa = PBXNativeTarget; buildConfigurationList = A1C421DAD96DFF096646A753; buildPhases = (878A52FC5FF6A57D50B7B870,E2AA269EB967A8853A258BFA,41D311A605520FC7B8B9A980,); buildRules = (); dependencies = (); name = InjectVault; productName = InjectVault; productReference = A8792157CB4F27FB949C035F; productType = "com.apple.product-type.application"; };
+244210E48437B6556980A702 = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = YES; LastUpgradeCheck = 1600; TargetAttributes = {34A04005BCAF206EEC990BD9 = {CreatedOnToolsVersion = 16.0; };};}; buildConfigurationList = A964DD4136F390AFDF0E5FBA; compatibilityVersion = "Xcode 14.0"; developmentRegion = pt; hasScannedForEncodings = 0; knownRegions = (pt,en,Base,); mainGroup = AD936FCBED631FA67E05C3EA; productRefGroup = 0A3E27B8CA818264D75C8D81; projectDirPath = ""; projectRoot = ""; targets = (34A04005BCAF206EEC990BD9,); };
+73EBF6644258C120893E685D = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = "iphoneos"; IPHONEOS_DEPLOYMENT_TARGET = "16.0"; SWIFT_VERSION = "5.0"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "VAULT_BASIC"; CLANG_ENABLE_MODULES = "YES"; ENABLE_USER_SCRIPT_SANDBOXING = "YES";}; name = Debug; };
+0B0C687DF8B6B8DC790B519C = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = "iphoneos"; IPHONEOS_DEPLOYMENT_TARGET = "16.0"; SWIFT_VERSION = "5.0"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "VAULT_BASIC"; CLANG_ENABLE_MODULES = "YES"; ENABLE_USER_SCRIPT_SANDBOXING = "YES";}; name = Release; };
+A964DD4136F390AFDF0E5FBA = {isa = XCConfigurationList; buildConfigurations = (73EBF6644258C120893E685D,0B0C687DF8B6B8DC790B519C,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+6C7EFF6369083C8E1F2B1994 = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = "iphoneos"; IPHONEOS_DEPLOYMENT_TARGET = "16.0"; SWIFT_VERSION = "5.0"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "VAULT_BASIC"; CLANG_ENABLE_MODULES = "YES"; ENABLE_USER_SCRIPT_SANDBOXING = "YES"; ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon"; PRODUCT_NAME = "InjectVault"; PRODUCT_BUNDLE_IDENTIFIER = "br.app.injectvault.basic"; INFOPLIST_FILE = "ios/InjectVault/Info-Basic.plist"; CODE_SIGN_ENTITLEMENTS = "ios/InjectVault/Basic.entitlements"; CODE_SIGN_STYLE = "Automatic"; TARGETED_DEVICE_FAMILY = "1"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_OPTIMIZATION_LEVEL = "-Onone";}; name = Debug; };
+DD75E2CB1C510A828AC72D96 = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = "iphoneos"; IPHONEOS_DEPLOYMENT_TARGET = "16.0"; SWIFT_VERSION = "5.0"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "VAULT_BASIC"; CLANG_ENABLE_MODULES = "YES"; ENABLE_USER_SCRIPT_SANDBOXING = "YES"; ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon"; PRODUCT_NAME = "InjectVault"; PRODUCT_BUNDLE_IDENTIFIER = "br.app.injectvault.basic"; INFOPLIST_FILE = "ios/InjectVault/Info-Basic.plist"; CODE_SIGN_ENTITLEMENTS = "ios/InjectVault/Basic.entitlements"; CODE_SIGN_STYLE = "Automatic"; TARGETED_DEVICE_FAMILY = "1"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_OPTIMIZATION_LEVEL = "-O";}; name = Release; };
+A1C421DAD96DFF096646A753 = {isa = XCConfigurationList; buildConfigurations = (6C7EFF6369083C8E1F2B1994,DD75E2CB1C510A828AC72D96,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+};
+rootObject = 244210E48437B6556980A702;
+}

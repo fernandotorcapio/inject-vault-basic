@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-03",
+  "scope": "Catálogo informativo de sistemas e produtos citados em fontes oficiais. Não é uma lista exaustiva de máquinas, ranking de uso ou confirmação de compatibilidade.",
+  "entries": [
+    {
+      "id": "nayax-brasil",
+      "name": "Nayax Brasil",
+      "kind": "Sistema de pagamentos e gestão",
+      "family": "Nayax / VMfun",
+      "summary": "A página de diversão eletrônica apresenta equipamentos de pagamento e gestão para operadores.",
+      "products": ["UPbox", "VMbox Standard", "Plug", "VMfun"],
+      "applications": ["Diversão eletrônica", "Gruas de pelúcia"],
+      "operatorFeature": "Gestão e pagamentos documentados. Crédito promocional específico e acesso de integração precisam de confirmação do fornecedor.",
+      "machineModelsVerified": [],
+      "integrationState": "not_connected",
+      "sources": [{"title": "Diversão eletrônica — Nayax Brasil", "url": "https://www.nayax.com.br/servico/diversao-eletronica/"}]
+    },
+    {
+      "id": "vendpago",
+      "name": "VendPago",
+      "kind": "Sistema de pagamentos e gestão",
+      "family": "VendTEF / ERP Vending",
+      "summary": "O fornecedor descreve uso em gruas e outros equipamentos, com confirmação individual de homologação.",
+      "products": ["VendTEF Smart", "ERP Vending"],
+      "applications": ["Gruas de pelúcia", "Vending machines", "Máquinas de café", "Poltronas de massagem", "Quiosques"],
+      "operatorFeature": "Crédito remoto depende da homologação do modelo e da autorização na conta do operador. Nenhuma API está conectada a este app.",
+      "machineModelsVerified": [],
+      "integrationState": "not_connected",
+      "sources": [{"title": "Compatibilidade por modelo — VendPago", "url": "https://conteudo.vendpago.com.br/faq/compatibilidade-maquinas/"}]
+    },
+    {
+      "id": "payblu",
+      "name": "Payblu",
+      "kind": "Aplicativo do ecossistema VendPago",
+      "family": "VendTEF / ERP Vending",
+      "summary": "A página da solução para gruas menciona Payblu junto ao VendTEF Smart. Não é apresentado aqui como fabricante independente de máquinas.",
+      "products": ["Payblu"],
+      "applications": ["Gruas com solução VendTEF compatível"],
+      "operatorFeature": "Interface de pagamento documentada. Suporte a benefício e integração de terceiros não foi verificado.",
+      "machineModelsVerified": [],
+      "integrationState": "not_connected",
+      "sources": [{"title": "Solução VendTEF para gruas — Payblu", "url": "https://maquinadepegar.com.br/"}]
+    },
+    {
+      "id": "pixmaq",
+      "name": "Pixmaq",
+      "kind": "Controlador e plataforma",
+      "family": "Pixmaq",
+      "summary": "O QR Interativo permite regras de promoção configuradas pelo operador em equipamentos conectados compatíveis.",
+      "products": ["QR Interativo", "Controlador Pixmaq", "TomadaPay"],
+      "applications": ["Equipamentos conectados compatíveis", "Vending machines", "Máquinas de café", "Cadeiras de massagem"],
+      "operatorFeature": "A documentação descreve benefícios sem pagamento, sujeitos às regras, limites e configuração do proprietário. O app não tem acesso à conta ou ao controlador.",
+      "machineModelsVerified": [],
+      "integrationState": "not_connected",
+      "sources": [{"title": "QR Interativo com liberação automática — Pixmaq", "url": "https://pixmaq.com.br/qr_interativo_liberacao_automatica"}]
+    },
+    {
+      "id": "cashmaq",
+      "name": "CashMAQ",
+      "kind": "Interface de pagamentos e telemetria",
+      "family": "CashMAQ",
+      "summary": "A solução para gruas conecta pagamentos confirmados à entrada de créditos compatível; a instalação é avaliada por equipamento.",
+      "products": ["Kit Pix para gruas"],
+      "applications": ["Gruas de pelúcia compatíveis"],
+      "operatorFeature": "Pagamento e registro em painel documentados. Benefício gratuito, compatibilidade específica e API de terceiros não foram verificados.",
+      "machineModelsVerified": [],
+      "integrationState": "not_connected",
+      "sources": [{"title": "Pix para gruas — CashMAQ", "url": "https://cashmaq.com.br/solucoes/pix-para-gruas"}]
+    }
+  ]
+}
